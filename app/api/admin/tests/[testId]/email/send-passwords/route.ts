@@ -1,0 +1,86 @@
+import { NextResponse } from "next/server"
+import connectToDatabase from "@/lib/mongoose"
+import { Test } from "@/models/test"
+import { TestCandidate } from "@/models/test-candidate"
+import { verifyAdminAuth } from "@/lib/admin-auth-helper"
+import { send1hCredentialsEmail } from "@/lib/test-email"
+
+export const dynamic = "force-dynamic"
+
+export async function POST(request: Request, { params }: { params: { testId: string } }) {
+  try {
+    const auth = await verifyAdminAuth(request)
+    if (!auth.authorized) {
+      return NextResponse.json({ success: false, message: auth.error }, { status: 401 })
+    }
+
+    const { candidateIds } = await request.json().catch(() => ({}))
+
+    await connectToDatabase()
+
+    const test = await Test.findOne({ testId: params.testId })
+    if (!test) {
+      return NextResponse.json({ success: false, message: "Test not found." }, { status: 404 })
+    }
+
+    const query: Record<string, any> = {
+      testId: params.testId,
+      isEligible: true, // Only whitelisted/eligible students
+    }
+
+    if (Array.isArray(candidateIds) && candidateIds.length > 0) {
+      query._id = { $in: candidateIds }
+    }
+
+    const candidates = await TestCandidate.find(query)
+
+    if (candidates.length === 0) {
+      return NextResponse.json(
+        { success: false, message: "No eligible candidates found to receive passwords." },
+        { status: 404 }
+      )
+    }
+
+    let successCount = 0
+    let failCount = 0
+
+    for (let i = 0; i < candidates.length; i += 5) {
+      const batch = candidates.slice(i, i + 5)
+      await Promise.all(
+        batch.map(async (cand) => {
+          const res = await send1hCredentialsEmail({
+            toEmail: cand.email,
+            candidateName: cand.name,
+            testTitle: test.title,
+            eventTitle: test.eventTitle,
+            loginId: cand.loginId || cand.email,
+            password: cand.password,
+            durationMinutes: test.durationMinutes || 30,
+          })
+
+          if (res.success) {
+            cand.passwordEmailSent = true
+            await cand.save()
+            successCount++
+          } else {
+            failCount++
+          }
+        })
+      )
+    }
+
+    return NextResponse.json({
+      success: true,
+      message: `1-Hour Passwords: Sent to ${successCount} candidates (${failCount} failed or credentials unconfigured).`,
+      successCount,
+      failCount,
+      total: candidates.length,
+    })
+  } catch (error: any) {
+    console.error("Send passwords error:", error)
+    return NextResponse.json(
+      { success: false, message: error?.message || "Failed to send password emails" },
+      { status: 500 }
+    )
+  }
+}

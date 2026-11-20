@@ -1,0 +1,181 @@
+"use client"
+
+import { useState } from "react"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import Link from "next/link"
+import { Award, CheckCircle2, Users, Rocket, Sparkles, ExternalLink, ArrowRight, Search, User } from "lucide-react"
+
+export default function CampusAmbassadorPage() {
+  return (
+    <div className="space-y-12 sm:space-y-16 py-6 sm:py-12">
+      {/* Hero Banner Section */}
+      <section className="relative min-h-[460px] md:min-h-[440px] w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-xl mx-auto container flex items-center justify-center p-0">
+        <div className="absolute inset-0">
+          <Image
+            src="https://res.cloudinary.com/payb7fsq/image/upload/v1792430791/WhatsApp_Image_2026-10-19_at_22.55.24.jpg"
+            alt="Campus Ambassadors Banner"
+            fill
+            className="object-cover brightness-50"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-black/90 pointer-events-none" />
+        </div>
+
+        {/* Hero Overlay Text */}
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-12 sm:py-16 md:py-20 text-white max-w-4xl mx-auto w-full">
+          <span className="px-3.5 py-1.5 bg-blue-600/90 text-xs font-semibold rounded-full mb-3 tracking-wider uppercase backdrop-blur-sm shadow-md">
+            HackKro Campus Program 2026
+          </span>
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight drop-shadow-md mb-3">
+            Become a Campus Ambassador
+          </h1>
+          <p className="text-sm sm:text-base md:text-lg text-gray-200 max-w-2xl leading-relaxed drop-shadow-sm mb-6">
+            Lead the hacker movement at your university. Connect student developers with national hackathons, exclusive bootcamps, and top-tier industry opportunities.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-xs sm:max-w-none">
+            <Button 
+              size="lg" 
+              className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 h-11 sm:h-12 rounded-xl shadow-lg shadow-blue-600/30 transition-all"
+              asChild
+            >
+              <Link href="/campus-ambassador/apply">
+                Apply Online Now <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button 
+              size="lg" 
+              className="w-full sm:w-auto border-2 border-white/70 bg-white/15 hover:bg-white/25 text-white font-bold px-6 h-11 sm:h-12 rounded-xl backdrop-blur-md shadow-md transition-all"
+              asChild
+            >
+              <Link href="/campus-ambassador/status">
+                <Search className="mr-2 h-4 w-4" /> Track Status
+              </Link>
+            </Button>
+            <Button 
+              size="lg" 
+              className="w-full sm:w-auto border-2 border-white/70 bg-white/15 hover:bg-white/25 text-white font-bold px-6 h-11 sm:h-12 rounded-xl backdrop-blur-md shadow-md transition-all"
+              asChild
+            >
+              <Link href="/campus-ambassador/login">
+                <User className="mr-2 h-4 w-4" /> Ambassador Login
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Program Benefits / Perks Section */}
+      <section className="container">
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <h2 className="text-3xl font-bold tracking-tight mb-3">Why Join the Program?</h2>
+          <p className="text-muted-foreground">
+            As a HackKro Campus Ambassador, you get exclusive access to leadership training, mentorship, and high-value rewards.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          <Card className="border border-blue-100 dark:border-blue-900/40 bg-blue-50/40 dark:bg-blue-950/20 shadow-sm hover:shadow-md transition-all">
+            <CardContent className="p-6 text-center flex flex-col items-center">
+              <div className="h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4">
+                <Rocket className="h-6 w-6" />
+              </div>
+              <h3 className="font-bold text-xl mb-2">Lead Your Campus</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Be the official face of HackKro at your college. Host workshops, coding sprints, and national-level hackathons right on your campus.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border border-blue-100 dark:border-blue-900/40 bg-blue-50/40 dark:bg-blue-950/20 shadow-sm hover:shadow-md transition-all">
+            <CardContent className="p-6 text-center flex flex-col items-center">
+              <div className="h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4">
+                <Users className="h-6 w-6" />
+              </div>
+              <h3 className="font-bold text-xl mb-2">Exclusive Network</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Connect with top student leaders across universities, industry founders, and software engineers for 1:1 mentorship and career guidance.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="border border-blue-100 dark:border-blue-900/40 bg-blue-50/40 dark:bg-blue-950/20 shadow-sm hover:shadow-md transition-all">
+            <CardContent className="p-6 text-center flex flex-col items-center">
+              <div className="h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4">
+                <Award className="h-6 w-6" />
+              </div>
+              <h3 className="font-bold text-xl mb-2">Perks & Rewards</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Earn official certificates, exclusive HackKro swags, cloud credits, recommendation letters, and fast-track hiring referrals.
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* Responsibilities Section */}
+      <section className="container bg-slate-50 dark:bg-slate-900/40 py-12 px-6 rounded-2xl border border-slate-200 dark:border-slate-800">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold tracking-tight mb-2">What You Will Do</h2>
+            <p className="text-muted-foreground">Key responsibilities as a HackKro Campus Ambassador</p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              "Promote HackKro hackathons, bootcamps, and coding events within your university.",
+              "Build and nurture a vibrant community of student developers and tech enthusiasts.",
+              "Coordinate with college tech clubs and faculty to drive student participation.",
+              "Share feedback, creative ideas, and growth strategies directly with the HackKro core team."
+            ].map((task, index) => (
+              <div key={index} className="flex items-start gap-3 bg-white dark:bg-slate-800/60 p-4 rounded-xl border border-slate-100 dark:border-slate-700/50 shadow-sm">
+                <CheckCircle2 className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
+                <span className="text-sm font-medium leading-relaxed">{task}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Online Application Call to Action Section */}
+      <section className="container text-center max-w-3xl">
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl p-8 md:p-12 shadow-xl relative overflow-hidden">
+          <div className="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+            <Sparkles className="h-64 w-64" />
+          </div>
+          
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">Ready to Lead the Change?</h2>
+          <p className="text-blue-100 text-base md:text-lg mb-8 max-w-xl mx-auto leading-relaxed">
+            Applications for the 2026 cohort are now open. Fill out the online application to represent your college and join our exclusive ambassador community.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Button 
+              size="lg" 
+              className="bg-white text-blue-700 hover:bg-blue-50 font-bold px-8 py-6 rounded-full shadow-lg transition-all transform hover:scale-105 w-full sm:w-auto"
+              asChild
+            >
+              <Link href="/campus-ambassador/apply">
+                Apply Online Now <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button 
+              size="lg" 
+              className="border-2 border-white/70 bg-white/15 hover:bg-white/25 text-white font-bold px-8 py-6 rounded-full shadow-lg transition-all w-full sm:w-auto backdrop-blur-md"
+              asChild
+            >
+              <Link href="/campus-ambassador/status">
+                <Search className="mr-2 h-4 w-4" /> Check Application Status
+              </Link>
+            </Button>
+          </div>
+          
+          <p className="text-xs text-blue-200 mt-6">
+            Have questions? Reach out to us at <a href="mailto:support@hackkro.com" className="underline font-medium text-white">support@hackkro.com</a>
+          </p>
+        </div>
+      </section>
+    </div>
+  )
+}

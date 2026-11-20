@@ -1,0 +1,48 @@
+{
+  "brand": {
+    "name": "HackKro",
+    "tagline": "Opportunities, Hackathons, Learning, Mentorship & Hiring"
+  },
+  "auth": {
+    "welcomeBack": "Welcome back",
+    "createAccount": "Create your HackKro account",
+    "identifierLabel": "Email or mobile number",
+    "identifierPlaceholder": "Email or mobile number",
+    "passwordLabel": "Password",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "rememberDevice": "Remember this device for 30 days",
+    "forgotPassword": "Forgot password?",
+    "continue": "Continue",
+    "signIn": "Sign in",
+    "orContinueWith": "or continue with",
+    "googleSignIn": "Continue with Google",
+    "otpHeading": "Enter one-time code",
+    "otpHelp": "Enter the 6-digit one-time code sent to {{destination}}.",
+    "otpResendIn": "Resend code in {{seconds}}s",
+    "otpResendNow": "Resend one-time code",
+    "neutralChallenge": "If an account matches these details, we'll send the next step.",
+    "neutralReset": "If an account matches these details, a single-use password reset link has been sent.",
+    "termsConsent": "I agree to the HackKro Terms of Service and Privacy Policy.",
+    "marketingConsent": "Keep me updated with curated opportunities and learning digests (optional)."
+  },
+  "errors": {
+    "AUTH_INVALID_CREDENTIALS": "The credentials you entered could not be verified. Please check and try again.",
+    "AUTH_CHALLENGE_EXPIRED": "Your one-time code has expired. Request a fresh code to continue.",
+    "AUTH_CHALLENGE_INVALID": "That one-time code is invalid. Please double-check and try again.",
+    "AUTH_RATE_LIMITED": "Too many attempts. Please wait a moment before trying again.",
+    "AUTH_PROVIDER_UNAVAILABLE": "This sign-in provider is currently unavailable or not configured.",
+    "AUTH_ACCOUNT_RESTRICTED": "Your account is currently restricted or suspended. Contact support with your reference ID.",
+    "AUTH_WEAK_PASSWORD": "Please choose a longer or less common passphrase (at least 8 characters).",
+    "AUTH_REAUTH_REQUIRED": "Please re-authenticate your password or OTP before performing this sensitive action.",
+    "VALIDATION_FAILED": "Please fix the highlighted fields before continuing.",
+    "ELIGIBILITY_NOT_MET": "You do not currently meet all listed eligibility criteria for this opportunity.",
+    "OPPORTUNITY_CLOSED": "This opportunity is no longer accepting applications.",
+    "CAPACITY_REACHED": "All available seats for this opportunity have been reserved.",
+    "PAYMENT_PENDING": "Payment confirmation is still pending for this registration.",
+    "SUBMISSION_TOO_LARGE": "The uploaded file exceeds the maximum allowed size limit.",
+    "CSRF_INVALID": "Your security session check failed. Refresh the page and try again.",
+    "FORBIDDEN": "You do not have permission to perform this action.",
+    "NOT_FOUND": "The requested resource could not be found."
+  }
+}
